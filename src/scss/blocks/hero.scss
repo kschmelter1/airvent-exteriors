@@ -1,0 +1,172 @@
+%hero-trans {transition: all .25s ease-in-out;}
+.block-hero {
+  position: relative;
+  height: 80vh;
+  min-height: 650px;
+  @include media-breakpoint-down(md) {
+    //height: 100vh;
+    min-height: 400px;
+  }
+  &-title {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    justify-content: center; align-items: center;
+    margin: 0;
+    @extend %pos-cover;
+    @extend %hero-trans;
+    span {
+      @extend %hero-text;
+      font-size: 5rem;
+      margin-bottom: 5rem;
+      @include ie-only() {
+        background-color: rgba(#004784, .75);
+        padding: 1.5rem 2rem;
+      }
+      @include media-breakpoint-down(sm) {
+        font-size: 3rem;
+      }
+    }
+    &::before {
+      @extend %pseudo;
+      opacity: .75;
+      z-index: -1;
+      bottom: 50%;
+      //left: 50%;
+      transform: translateY(calc(50% - 2.25rem));
+      height: 12.5rem;
+      width: 75%;
+      background-color: #004784;
+      transition: all .5s ease;
+      @include media-breakpoint-down(md) {
+        height: 7rem;
+        transform: translateY(-.5rem);
+      }
+      @include media-breakpoint-down(sm) {
+        height: 100%;
+        transform: translateY(0);
+        bottom: 0;
+        width: 100%;
+      }
+      @include ie-only() {
+        display: none;
+      }
+    }
+  }
+  &-cols {
+    position: relative;
+    height: 100%;
+    & > div {
+      height: 100%;
+      overflow: hidden;
+      background-color: $dark;
+      position: relative;
+      .btn {
+        position: absolute;
+        z-index: 10;
+        bottom: 3.5rem;
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        padding: 1.75rem 2rem;
+        white-space: normal;
+        @extend %hero-trans;
+          transform: translateX(-50%);
+          width: 26rem;
+          border-radius: 5rem;
+        @include media-breakpoint-down(lg) {
+          border-radius: 0;
+          transform: translateX(0);
+          width: auto;
+        }
+      }
+      img {
+        mix-blend-mode: screen;
+        width: 100vw;
+        height: 100%;
+        @include object-fit(cover);
+      }
+    }
+  }
+  .panel-0 {
+    position: relative;
+    .btn {
+      left: 25%;
+      @extend %btn-secondary;
+      @include media-breakpoint-down(lg) {
+        left: 0;
+        right: 50%;
+      }
+    }
+    @at-root .active-left#{&} {
+      @include media-breakpoint-up(lg) {
+        .btn {
+          left: 38%;
+        }
+      }
+    }
+    @at-root .active-right#{&} {
+        .btn {
+          @extend %btn-light;
+          @include media-breakpoint-up(lg) {
+            transform: scale(.75);
+            left: 1.5%;
+          }
+        }
+    }
+  }
+  .panel-1 {
+    top: 0; bottom: 0; right: 0; width: 50%;
+    position: absolute;
+    @extend %hero-trans;
+    .btn {
+      left: 50%;
+      @extend %btn-light;
+      @include media-breakpoint-down(lg) {
+        left: 0;
+        right: 0;
+      }
+    }
+    @at-root .active-left#{&} {
+      @include media-breakpoint-up(lg) {
+        width: 25%;
+        .btn {
+          transform: scale(.75);
+          left: 5%;
+        }
+      }
+    }
+    @at-root .active-right#{&} {
+      @include media-breakpoint-up(lg) {
+          width: 75%;
+        }
+        .btn {
+          @extend %btn-secondary;
+        }
+    }
+  }
+
+  &.active-left {
+    @include media-breakpoint-up(lg) {
+      .block-hero-title {
+        right: 25%;
+        &::before {
+          height: 100%; width: 100%;
+          transform: translateY(0);
+          bottom: 0;
+        }
+      }
+    }
+  }
+  &.active-right {
+    @include media-breakpoint-up(lg) {
+      .block-hero-title {
+        left: 25%;
+        &::before {
+          height: 100%; width: 100%;
+          transform: translateY(0);
+          bottom: 0;
+        }
+      }
+    }
+  }
+}

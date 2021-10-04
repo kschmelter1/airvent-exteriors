@@ -1,0 +1,74 @@
+/*
+  This mixin can be used to set the object-fit:
+  @include object-fit(contain);
+
+  or object-fit and object-position:
+  @include object-fit(cover, top);
+*/
+@mixin object-fit($fit: fill, $position: null){
+  -o-object-fit: $fit;
+     object-fit: $fit;
+  @if $position {
+	  -o-object-position: $position;
+	     object-position: $position;
+  	font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  } @else {
+  	font-family: 'object-fit: #{$fit}';
+  }
+}
+
+%img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: $border-radius-lg;
+}
+%img-cover {
+  @extend %pos-cover;
+  @include object-fit(cover);
+  height: 100%;
+  width: 100%;
+}
+%screen {
+  mix-blend-mode: screen;
+}
+
+@mixin img-wrap($pad: 50%) {
+    @extend %img-wrap;
+    padding-top: $pad;
+    background-color: $dark;
+    border: solid 1px #eee;
+    img {
+      @extend %img-cover;
+      @extend %screen;
+    }
+}
+
+@mixin set-heading-color($color) {
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: $color;
+  }
+}
+
+
+@mixin ie-and-edge {
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     /* IE10+ CSS styles go here */
+      @content;
+  }
+  @supports (-ms-ime-align:auto) {
+		/* Edge 12+ styles go here */
+       @content;
+  }
+}
+@mixin ie-only {
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     /* IE10+ CSS styles go here */
+      @content;
+  }
+}
+@mixin edge-only {
+	@supports (-ms-ime-align:auto) {
+		/* Edge 12+ styles go here */
+       @content;
+  }
+}

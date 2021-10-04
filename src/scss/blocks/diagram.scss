@@ -1,0 +1,205 @@
+.block-diagram {
+  @include media-breakpoint-down(md) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .img-wrap {
+    @extend %img-wrap;
+    padding-top: 55%;
+    @include media-breakpoint-down(md) {
+      border-radius: 0;
+    }
+    img {
+      @extend %img-cover;
+      z-index: -1;
+    }
+  }
+
+  .diagram {
+    position: relative;
+    .hotspot {
+      position: absolute;
+      background-color: $yellow;
+      color: $navy;
+      transition: all .15s ease-in;
+      height: 4rem;
+      width: 4rem;
+      display: flex;
+      align-items: center; justify-content: center;
+      border-radius: 100%;
+      font-size: 14px;
+      font-weight: bold;
+      @include media-breakpoint-down(lg) {
+        height: 3rem;
+        width: 3rem;
+      }
+      &:hover, &.active {
+        background-color: $accent;
+        color: #fff;
+      }
+      &:not(.active) {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .parts {
+    position: relative;
+    padding-right: $cf-padding;
+    padding-left: $cf-padding;
+    padding-top: 2rem;
+    margin-top: -11rem;
+    @include media-breakpoint-down(xl) {
+      margin-top: -6rem;
+      padding-right: $cf-padding-half;
+      padding-left: $cf-padding-half;
+    }
+    @include media-breakpoint-down(md) {
+      margin-top: -3rem;
+      padding-top: 4rem;
+    }
+    &-wrapper {
+      background-color: #fff;
+      border-radius: 1rem;
+      //box-shadow: 0px -10px 10px 0px rgba(28,100,148,0.25);
+      box-shadow: 0px -13px 12px 0px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+    .single-part {
+      display: flex;
+      @include media-breakpoint-down(md) {
+        flex-direction: column;
+      }
+      & > div {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 2.5rem;
+        @include media-breakpoint-down(md) {
+          padding: 1rem 2.5rem;
+        }
+      }
+      &-label {
+        @extend %small-cond-text;
+        margin-bottom: .25rem;
+        color: $navy;
+      }
+      &-features {
+        padding-top: 1rem;
+        ul {
+          padding-left: 1.15rem;
+          &:last-child {
+            margin: 0;
+          }
+          li {
+            &:not(:last-child) {
+              margin-bottom: .5rem;
+            }
+          }
+        }
+      }
+      &-box {
+        border: solid .25rem $cyan;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 1rem;
+        .badge {
+          position: absolute;
+          display: flex;
+          align-items: center; justify-content: center;
+          border-radius: 100%;
+          height: 3rem;
+          width: 3rem;
+          background-color: $cyan;
+          color: #fff;
+          top: -1.55rem;
+          right: -1.55rem;
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .single-part-image {
+          flex: 0 0 45%;
+          padding-right: 1rem;
+          i {
+            font-size: 3rem;
+            width: 100%;
+            text-align: center;
+            padding: 2rem 1rem 2rem 0;
+          }
+        }
+        .single-part-title {
+          font-weight: 700;
+          font-family: $cond-font;
+          color: $navy;
+          font-size: 1.75rem;
+          margin: 0;
+          position: relative;
+          padding-left: 1.5rem;
+          &::before {
+            @extend %pseudo;
+            background-color: $tertiary;
+            height: 3rem;
+            width: .2rem;
+            border-radius: 1rem;
+            position: absolute;
+            left: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+
+  .part-button {
+    background-color: $cyan;
+    color: #fff;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 7rem;
+    width: 5rem;
+    top: 8.5rem;
+    z-index: 1;
+    cursor: pointer;
+    transition: all .25s ease-in;
+    @include media-breakpoint-down(xl) {
+      width: $cf-padding-half;
+      top: 3.5rem;
+    }
+    @include media-breakpoint-down(md) {
+      top: 0;
+      width: 50%;
+      height: 5rem;
+      padding-bottom: 1rem;
+    }
+    &:hover {
+      background-color: darken($cyan, 10%);
+    }
+    &.button-prev {
+      left: calc(#{$cf-padding} - 5rem);
+      border-top-left-radius: .5rem;
+      border-bottom-left-radius: .5rem;
+      @include media-breakpoint-down(xl) {
+        left: 0;
+      }
+      @include media-breakpoint-down(md) {
+        left: 1rem;
+      }
+    }
+    &.button-next {
+      right: calc(#{$cf-padding} - 5rem);
+      border-top-right-radius: .5rem;
+      border-bottom-right-radius: .5rem;
+      @include media-breakpoint-down(xl) {
+        right: 0;
+      }
+      @include media-breakpoint-down(md) {
+        right: 1rem;
+      }
+    }
+  }
+}

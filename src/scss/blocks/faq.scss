@@ -1,0 +1,120 @@
+.block-faq {
+  position: relative;
+  &::after {
+    @at-root .block-faq-left#{&} {
+      @extend %pseudo;
+      border-radius: $border-radius-lg;
+      z-index: -1;
+      background-color: $blue;
+      top: 0;
+      right: 0;
+      bottom: 25%;
+      width: 29%;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+  }
+  & > .row {
+    @include media-breakpoint-down(lg) {
+      flex-direction: column-reverse;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .text-col {
+      @at-root .block-faq-left#{&} {
+        padding-right: calc(#{$cf-padding} + 15px);
+      }
+      @at-root .block-faq-right#{&} {
+        padding-left: calc(#{$cf-padding} + 15px);
+      }
+    }
+  }
+
+  &-right {
+    & > .row:last-child {
+      flex-direction: row-reverse;
+      @include media-breakpoint-down(lg) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+  .btns {
+    margin-top: 2rem;
+  }
+  .img-wrap {
+    position: relative;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    @at-root .block-faq-right#{&} {
+      &-shadow {
+        position: relative;
+        padding-bottom: 9rem;
+        &::after {
+            @extend %pseudo;
+            border-radius: $border-radius-lg;
+            z-index: -1;
+            background-color: $cyan;
+            top: 40%;
+            left: calc(#{$cf-padding} * -1.75);
+            bottom: 0;
+            width: 28vw;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        @include media-breakpoint-down(lg) {
+          padding-bottom: 3rem;
+          margin-bottom: 3rem;
+        }
+      }
+    }
+    &.normal {
+      padding-top: 75%;
+      @include media-breakpoint-down(lg) {
+        padding-top: 60%;
+      }
+    }
+    &.narrow {
+      padding-top: 110%;
+      @include media-breakpoint-down(lg) {
+        padding-top: 80%;
+      }
+    }
+    img {
+      @extend %img-cover;
+    }
+  }
+
+  .accordion {
+    .faq {
+      &-question {
+        padding: 1rem 0;
+        margin: 0;
+        white-space: normal;
+        position: relative;
+        padding-right: 2rem;
+        display: block;
+        text-align: left;
+        &::after {
+          @extend %fa;
+          content: '\f056';
+          position: absolute;
+          right: .5rem;
+          top: 1rem;
+          font-size: 1.2rem;
+        }
+        &.collapsed {
+          &::after {
+            content: '\f055';
+          }
+        }
+      }
+      &-answer {
+        line-height: 1.7;
+        padding-left: 1rem;
+        padding-right: 2rem;
+        font-weight: bold;
+      }
+    }
+  }
+}

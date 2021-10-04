@@ -1,0 +1,83 @@
+body {
+  color: $primary;
+  font-family: $reg-font;
+}
+
+.container-fluid {
+  padding-left: $cf-padding;
+  padding-right: $cf-padding;
+  &.narrow {
+    padding-left: $cf-padding-half;
+    padding-right: $cf-padding-half;
+  }
+  &.wide {
+    padding-left: calc(#{$cf-padding} * 1.75);
+    padding-right: calc(#{$cf-padding} * 1.75);
+    @include media-breakpoint-down(lg) {
+      padding-left: $cf-padding;
+      padding-right: $cf-padding;
+    }
+  }
+}
+
+.main-phone {
+  display: flex;
+  align-items: center;
+  line-height: 1.2;
+  i {
+    color: $light;
+    font-size: 1.75rem;
+    margin-right: 1rem;
+  }
+  .hours {
+    color: $light;
+    @extend %small-cond-text;
+  }
+  .phone {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    font-weight: 900;
+    @extend %transition;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.social-media {
+  margin-bottom: 0;
+  li {
+    &:not(:last-child) {
+      margin-right: 1.75rem;
+    }
+    a {
+      color: $light;
+      font-size: 1.4rem;
+      @extend %transition;
+    }
+  }
+}
+
+#phone-tab {
+  background-color: $primary;
+  color: #fff;
+  border: 3px solid #F2DC5D;
+  top: 60%;
+  left: 0;
+  position: fixed;
+  border-radius: 10px;
+  font-size: 1.35rem;
+  transform: translate(-9.5rem);
+  transition: all .25s ease;
+  z-index: 900;
+  display: block;
+  padding: .75rem;
+  i {
+    margin-left: calc(.5rem - 1px);
+  }
+  &:hover {
+    background-color: $light;
+    transform: translate(-.5rem);
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,194 @@
+.footer-logos {
+  .logo-wrapper {
+    text-align: center;
+    padding: 4rem 0;
+    display: block;
+    @include media-breakpoint-down(md) {
+      padding: 2rem 0;
+    }
+    img {
+      max-height: 5rem;
+      filter: grayscale(100%);
+      @extend %transition;
+    }
+  }
+  a.logo-wrapper {
+    &:hover {
+      img {
+        filter: grayscale(0);
+      }
+    }
+  }
+}
+.main-footer {
+  position: relative;
+  padding: 2rem 0 3rem;
+  &::before {
+    @extend %pseudo;
+    top: 0; bottom: 0;
+    left: $cf-padding;//calc(#{$cf-padding} + #{$cf-padding-half});
+    right: $cf-padding;//calc(#{$cf-padding} + #{$cf-padding-half});
+    background-color: $dark;
+    @include media-breakpoint-down(lg) {
+      left: $cf-padding-half;
+      right: $cf-padding-half;
+    }
+  }
+  & > div {
+    padding-left: 0!important;
+    position: relative;
+    @include media-breakpoint-down(lg) {
+      padding-left: $cf-padding !important;
+      padding-right: $cf-padding !important;
+    }
+    &::before, &::after {
+      @extend %pseudo;
+      background-color: $secondary;
+      top: 3rem; bottom: 3rem;
+    }
+    &::before {
+      left: 0;
+      width: calc(#{$cf-padding-half} * 3);
+      @include media-breakpoint-down(lg) {
+        z-index: -1;
+      }
+      @include ie-only() {
+        width: 13%;
+      }
+    }
+    &::after {
+      z-index: -1;
+      right: 0;
+      width: calc(#{$cf-padding} + #{$cf-padding-half});
+      @include ie-only() {
+        width: 100%;
+      }
+    }
+    .nav-col {
+      //width: calc(#{$cf-padding-half} * 3.5);
+      padding-right: calc(#{$cf-padding} / 3);
+      align-self: center;
+    }
+  }
+  .footer-top {
+    color: #fff;
+    padding-bottom: 4rem;
+    @include set-heading-color(#fff);
+    .footer-return {
+      padding-bottom: 3rem;
+      text-align: center;
+      a {
+        color: $secondary;
+        position: relative;
+        @extend %small-cond-text;
+        padding-top: 3rem;
+        display: inline-block;
+        @extend %transition;
+        &::before {
+          @extend %fa;
+          content: '\f106';
+          font-weight: 300;
+          font-size: 3rem;
+          top: 0;
+          display: block;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        &:hover {
+          text-decoration: none;
+          color: #fff;
+        }
+      }
+    }
+    .h3 {
+      margin-bottom: 1rem;
+    }
+    address.h3 {
+      margin-bottom: 1.5rem;
+      @include media-breakpoint-down(lg) {
+        text-align: center;
+      }
+    }
+    .main-phone {
+      display: block;
+      @include media-breakpoint-down(lg) {
+        text-align: center;
+        margin-bottom: 2rem;
+        .hours {
+          font-size: 1.5rem;
+        }
+        .phone {
+          font-size: 1.75rem;
+        }
+      }
+      .phone {
+        color: #fff;
+        &:hover {
+          color: $secondary;
+        }
+      }
+      i {display: none;}
+    }
+    .seo {
+      font-size: .9rem;
+      line-height: 1.75;
+    }
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.3);
+    color: #fff;
+    padding-top: 2rem;
+    @include media-breakpoint-up(lg) {
+      & > div {
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+
+    .nav {
+      @include media-breakpoint-down(lg) {
+        justify-content: center;
+      }
+    }
+    .footer-social {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      @extend %small-cond-text;
+      @include media-breakpoint-down(lg) {
+        justify-content: center;
+        margin-top: 1rem;
+      }
+      & > div {
+        margin-right: 1.75rem;
+      }
+      a {
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+    .copyright {
+      @include media-breakpoint-down(lg) {
+        text-align: center;
+      }
+      a {
+        @extend %nav-footer;
+      }
+    }
+  }
+  .newsletter {
+    @include media-breakpoint-down(lg) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+#menu-footer-menu .nav-link {
+	font-size: 1.35rem
+}

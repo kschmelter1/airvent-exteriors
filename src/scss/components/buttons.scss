@@ -1,0 +1,72 @@
+%btn {
+  border: 0;
+  @extend %small-cond-text;
+  text-decoration: none !important;
+  &[type=button] {
+    -webkit-appearance: none;
+  }
+}
+
+%btn-primary {
+  color: #fff;
+  background-color: $primary;
+  &:hover {
+    background-color: darken($primary, 10%);
+  }
+}
+
+%btn-secondary {
+  color: $dark;
+  background-color: $secondary;
+  &:hover {
+    background-color: darken($secondary, 10%);
+  }
+}
+
+%btn-light {
+  color: $primary;
+  background-color: #fff;
+  &:hover {
+    background-color: #f2f7fa; //darken(#fff, 10%);
+  }
+}
+
+%btn-accent {
+  color: #fff;
+  background-color: $accent;
+  &:hover {
+    background-color: darken($accent, 10%);
+  }
+}
+
+%blue-link {
+  @extend %small-cond-text;
+  color: $tertiary;
+  position: relative;
+  padding-bottom: .5rem;
+  @extend %transition;
+  &::after {
+    @extend %pseudo;
+    background-color: $tertiary;
+    width: 3.5rem;
+    height: .2rem;
+    border-radius: 1rem;
+    bottom: 0;
+    left: -1px;
+    @extend %transition;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $accent;
+    &::after {
+      background-color: $accent;
+    }
+  }
+}
+
+.btn {
+  @extend %btn;
+  &-secondary {
+    color: $secondary;
+  }
+}

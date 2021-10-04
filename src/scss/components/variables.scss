@@ -1,0 +1,29 @@
+/**********
+ * Layout *
+ **********/
+
+// Container Fluid Padding
+$cf-padding: 8.3vw;
+$cf-padding-half: calc(#{$cf-padding} / 2);
+
+// Section Margins
+$block-margin: 7rem;
+
+%block-margin-top {
+  margin-top: $block-margin;
+  @include media-breakpoint-down(md) {
+    margin-top: calc(#{$block-margin} / 2);
+  }
+}
+
+%block-margin-bottom {
+  margin-bottom: $block-margin;
+  @include media-breakpoint-down(md) {
+    margin-bottom: calc(#{$block-margin} / 2);
+  }
+}
+
+%block-margin {
+  @extend %block-margin-top;
+  @extend %block-margin-bottom;
+}

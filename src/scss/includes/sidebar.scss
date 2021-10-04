@@ -1,0 +1,53 @@
+.sidebar {
+  @extend %block-margin;
+  &-blog {
+    padding-left: 2rem;
+  }
+  .widget {
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+    &-title {
+      @extend %widget-title;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      li {
+        &:not(:last-child) {
+          margin-bottom: .75rem;
+        }
+        a {
+          @extend %small-cond-text;
+          color: $light;
+          font-size: 1.1rem;
+          @extend %transition;
+          &:hover {
+            color: $dark;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    &.Annual_Archive_Widget {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          &:not(:last-child) {
+            a {
+              position: relative;
+              margin-right: .5rem;
+              &::after {
+                content: ',';
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

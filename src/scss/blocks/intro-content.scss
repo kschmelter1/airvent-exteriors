@@ -1,0 +1,157 @@
+.block-intro-content {
+  position: relative;
+    &::after {
+      @at-root .block-intro-content-left#{&} {
+        @extend %pseudo;
+        border-radius: $border-radius-lg;
+        z-index: -1;
+        background-color: $blue;
+        //top: 0;
+        right: 0;
+        bottom: 25%;
+        //width: 29%;
+        //padding-top: 30%;
+
+        width: 25%;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        @include media-breakpoint-down(lg) {
+          display: none;
+        }
+      }
+
+    }
+    &.has-heading {
+      &::after {
+        padding-top: 30%;
+      }
+    }
+    &:not(.has-heading) {    
+      &::after {
+        top: -3rem;
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      .text-col {
+        @at-root .block-intro-content-left#{&} {
+          padding-right: calc(#{$cf-padding} + 15px);
+        }
+        @at-root .block-intro-content-right#{&} {
+          padding-left: calc(#{$cf-padding} + 15px);
+        }
+      }
+    }
+
+  &-right {
+    & > .row:last-child {
+      flex-direction: row-reverse;
+    }
+  }
+  &-title {
+    @extend %column-title;
+    padding-top: 0;
+  }
+  .block-title {
+    max-width: 58%;
+    @include media-breakpoint-down(lg) {
+      max-width: 80%;
+    }
+  }
+  .block-text {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .btns {
+    margin-top: 2rem;
+  }
+  .img-wrap {
+    position: relative;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    @at-root .block-intro-content-right#{&} {
+      &-shadow {
+        position: relative;
+        padding-bottom: 9rem;
+        &::after {
+            @extend %pseudo;
+            border-radius: $border-radius-lg;
+            z-index: -1;
+            background-color: $cyan;
+            top: 40%;
+            left: calc(#{$cf-padding} * -1.75);
+            bottom: 0;
+            width: 28vw;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+      }
+    }
+    &.normal {
+      padding-top: 75%;
+    }
+    &.narrow {
+      padding-top: 110%;
+    }
+    img {
+      @extend %img-cover;
+    }
+  }
+
+  .cocoen {
+    border-radius: $border-radius-lg;
+    & > div {
+      img {
+        @extend %img-cover;
+      }
+    }
+    &-drag {
+      width: 5px;
+      &::before {
+        border-radius: 100%;
+        height: 2rem;
+        width: 2rem;
+        margin-left: -1rem;
+        border-width: 5px;
+      }
+    }
+  }
+
+  &.fullwidth-image {
+    .img-wrap.normal {
+      padding-top: 50%;
+    }
+    .image-overlay {
+      @extend %img-wrap;
+      position: absolute;
+
+      width: 30%;
+
+      border: solid 2px $primary;
+      &-wrap {
+        position: absolute;
+        pointer-events: none;
+        @extend %pos-cover;
+        @at-root .block-intro-content-right#{&} {
+          bottom: 9rem;
+        }
+      }
+      img {
+        @extend %img-cover;
+        z-index: 2;
+      }
+      @at-root .block-intro-content-left#{&} {
+        top: 50%;
+        bottom: -2rem;
+        left: calc(#{$cf-padding} / -2);
+      }
+      @at-root .block-intro-content-right#{&} {
+        top: 50%;
+        bottom: -2rem;
+        right: calc(#{$cf-padding} / -2);
+      }
+    }
+  }
+}

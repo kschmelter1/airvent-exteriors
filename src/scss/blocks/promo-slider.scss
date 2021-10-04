@@ -1,0 +1,105 @@
+.block-promo-slider {
+  position: relative;
+  margin-top: calc(#{$block-margin} + 1rem);
+  margin-bottom: calc(#{$block-margin} + 1rem);
+  &::before {
+    @extend %pseudo;
+    z-index: -1;
+    background-color: $tertiary;
+    top: -2rem; bottom: -2rem;
+    left: calc(#{$cf-padding} * 1.75);
+    right: calc(#{$cf-padding} * 1.75);
+  }
+  .swiper {
+    &-slide {
+      background-color: $dark;
+      color: #fff;
+      height: auto;
+      img {
+        @extend %img-cover;
+        @extend %screen;
+        z-index: 1;
+        opacity: .3;
+      }
+      .content {
+        position: relative;
+        z-index: 5;
+        padding: 4rem calc(#{$cf-padding} * 1.75) 4rem;
+        text-align: center;
+        @include media-breakpoint-down(lg) {
+          padding: 5rem calc(#{$cf-padding} * 1.75) 4rem;
+        }
+        .title {
+          font-weight: 800;
+          font-size: 4rem;
+          line-height: 1.1;
+          margin-bottom: 3rem;
+          @include media-breakpoint-down(lg) {
+            font-size: 3rem;
+          }
+          @include media-breakpoint-down(md) {
+            font-size: 2rem;
+          }
+        }
+        .text {
+          font-family: $cond-font;
+          font-size: 1.5rem;
+          margin-bottom: 3.5rem;
+        }
+        .buttons {
+          @include media-breakpoint-down(md) {
+            display: flex;
+            flex-direction: column;
+          }
+          .btn {
+            border-radius: 3rem;
+            @include media-breakpoint-down(md) {
+              flex-grow: 1;
+              flex-basis: 0;
+            }
+            &:first-child {
+              @extend %btn-light;
+            }
+            &:nth-child(2) {
+              @extend %btn-secondary;
+              margin-left: 1.5rem;
+              @include media-breakpoint-down(md) {
+                margin-left: 0;
+                margin-top: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    &-button {
+      &-prev, &-next {
+        background: none !important;
+        color: #fff;
+        font-size: 3rem;
+        height: auto;
+        width: auto;
+        line-height: 1;
+        @extend %transition;
+        @include media-breakpoint-down(md) {
+          font-size: 1.5rem;
+        }
+        &:hover {
+          color: $accent;
+        }
+      }
+      &-prev {
+        left: $cf-padding;
+        @include media-breakpoint-down(md) {
+          left: calc(#{$cf-padding} / 2);
+        }
+      }
+      &-next {
+        right: $cf-padding;
+        @include media-breakpoint-down(md) {
+          right: calc(#{$cf-padding} / 2);
+        }
+      }
+    }
+  }
+}

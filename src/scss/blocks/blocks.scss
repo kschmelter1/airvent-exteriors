@@ -1,0 +1,150 @@
+.block {
+  @extend %block-margin;
+  &-title {
+    @extend %section-title;
+  }
+  &-text {
+    @extend %body-text;
+    ul {
+      padding-left: 1.15rem;
+      li {
+        &:not(:last-child) {
+          margin-bottom: .5rem;
+        }
+      }
+    }
+  }
+  &-center-blurb {
+    .block-text {
+      width: 55rem;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .block-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 4rem;
+    }
+  }
+}
+
+.guten-block {
+  @extend %block-margin;
+  @extend %body-text;
+  h2, h3, h4, h5, h6 {
+    font-family: $reg-font;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  ul {
+    padding-left: 1.15rem;
+    li {
+      &:not(:last-child) {
+        margin-bottom: .5rem;
+      }
+    }
+  }
+  img {
+    margin: 1.5rem 2.5rem;
+    border-radius: 1rem;
+    max-width: 100%;
+    height: auto;
+    &.alignright {
+      float: right;
+      margin-right: calc(#{$cf-padding} * -1);
+      max-width: calc(#{$cf-padding} + 60%);
+    }
+    &.alignleft {
+      float: left;
+      margin-left: calc(#{$cf-padding} * -1);
+      max-width: calc(#{$cf-padding} + 60%);
+    }
+    &.align-center {
+      display: block;
+      margin: 2rem auto;
+    }
+  }
+  .wp-caption {
+    margin: 1.5rem 2.5rem;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    img {
+      margin: 0;
+    }
+    &-text {
+      margin-top: 1rem;
+      @extend %small-cond-text;
+      color: $light;
+      margin-bottom: 0;
+    }
+    &.alignright {
+      float: right;
+      margin-right: calc(#{$cf-padding} * -1);
+      max-width: calc(#{$cf-padding} + 60%);
+    }
+    &.alignleft {
+      float: left;
+      margin-left: calc(#{$cf-padding} * -1);
+      max-width: calc(#{$cf-padding} + 60%);
+    }
+    &.align-center {
+      display: block;
+      margin: 2rem auto;
+    }
+  }
+  blockquote {
+    color: $dark;
+    font-size: 2rem;
+    line-height: 1.4;
+    position: relative;
+    &::before {
+      @extend %pseudo;
+      background-image: url('img/quotes.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      top: -2.5vw;
+      left: -5vw;
+      width: 10vw;
+      height: 10vw;
+      z-index: -1;
+    }
+    p {
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .wp-block-columns {
+    flex-wrap: wrap;
+  }
+  .wp-block-column {
+    flex: 0 0 100% !important;
+    margin-left: 0 !important;
+    margin-bottom: calc(#{$block-margin} / 2);
+  }
+}
+
+
+@import "service-cards";
+@import "hero";
+@import "promo-slider";
+@import "faq";
+@import "testimonial-slider";
+@import "cta";
+@import "intro-content";
+@import "rfi";
+@import "diagram";
+@import "swatches";
+@import "gallery-page";
+@import "design-slider";

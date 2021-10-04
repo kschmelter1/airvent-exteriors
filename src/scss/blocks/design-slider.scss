@@ -1,0 +1,118 @@
+.block-design-slider {
+  .design-slider {
+    position: relative;
+  }
+  .swiper-wrapper {
+    padding-bottom: 1.5rem;
+  }
+  .content {
+    padding: 0 1rem;
+  }
+  .single-card {
+    padding: 0 1rem 1rem;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    &::before {
+      @extend %pseudo;
+      left: 0; right: 0; bottom:0;
+      top: 25%;
+      z-index: -1;
+      border-radius: $border-radius-lg;
+      box-shadow: 0px 0px 19px 0px rgba(28,100,148,0.3);
+      background: linear-gradient(120deg, rgba(255,255,255,1) 70%, rgba(247,252,255,1) 70%);
+    }
+    .img-wrap {
+      //@include img-wrap(75%);
+      @include img-wrap(100%);
+      margin-bottom: 1rem;
+    }
+    &-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      .title {
+        @extend %card-title;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        padding-bottom: .75rem;
+        margin-bottom: 0;
+        position: relative;
+        &::after {
+          @extend %pseudo;
+          border-bottom: solid 1px $primary;
+          width: 7.5rem;
+          left: 0rem;
+          bottom: 0;
+        }
+        &-link {
+          color: $cyan;
+          @extend %transition;
+          &:hover {
+            color: $accent;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+      }
+      &-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+      .text {
+        color: $primary;
+        font-size: 1.1rem;
+        @extend %body-text;
+        &:not(:last-child) {
+          margin-bottom: 1.5rem;
+        }
+      }
+      .link {
+        @extend %blue-link;
+      }
+    }
+
+
+  }
+
+  .swiper-button {
+    &-prev, &-next {
+      background: none !important;
+      color: $accent;
+      font-size: 3rem;
+      height: auto;
+      width: auto;
+      line-height: 1;
+      @extend %transition;
+      @include media-breakpoint-down(md) {
+        font-size: 1.5rem;
+      }
+      &:hover {
+        color: $accent;
+      }
+    }
+    &-prev {
+      left: calc(#{$cf-padding} * -.25);
+      @include media-breakpoint-down(md) {
+        left: calc(#{$cf-padding} / 2);
+      }
+    }
+    &-next {
+      right: calc(#{$cf-padding} * -.25);
+      @include media-breakpoint-down(md) {
+        right: calc(#{$cf-padding} / 2);
+      }
+    }
+    &-disabled {
+      display: none;
+    }
+  }
+
+  .block-intro-content-title {
+    padding-left: 1rem;
+  }
+}

@@ -1,0 +1,63 @@
+.swatch {
+  margin-bottom: 1rem;
+  padding: 0 2.5rem;
+  &-wrap {
+    position: relative;
+    overflow: hidden;
+    padding-top: 60%;
+    margin-bottom: .75rem;
+    border-top-left-radius: $border-radius-lg;
+    border-top-right-radius: $border-radius-lg;
+    img {
+      @extend %img-cover;
+    }
+  }
+  &-caption {
+    @extend %card-title;
+    //@extend %small-cond-text;
+    font-size: 1.1rem;
+    color: $dark;
+  }
+  &-text {
+    @extend %body-text;
+    margin-top: .75rem;
+    padding-top: .5rem;
+    position: relative;
+    &::before {
+
+        @extend %pseudo;
+        border-bottom: solid 1px $primary;
+        width: 4.5rem;
+        left: -1rem;
+        top: 0;
+
+    }
+  }
+}
+
+.block-swatch-preview {
+  .btn-wrapper {
+    margin-top: 3rem;
+  }
+}
+
+.block-swatches {
+  &-single {
+    margin-bottom: 5rem;
+    padding: 0 2rem;
+    position: relative;
+    &::before {
+      top: 0; bottom: 0; left: 2rem; right: 2rem; z-index: -1;
+      @extend %pseudo;
+      border-radius: $border-radius-lg;
+      box-shadow: 0px 0px 19px 0px rgba(28,100,148,0.3);
+      background: linear-gradient(120deg, rgba(255,255,255,1) 70%, rgba(247,252,255,1) 70%);
+    }
+    .content {
+      padding: 0 1rem 1rem 1rem;
+    }
+  }
+  &-title {
+    @extend %column-title;
+  }
+}

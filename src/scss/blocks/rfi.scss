@@ -1,0 +1,11 @@
+.block-rfi {
+  &-title {
+    @extend %column-title;
+  }
+  .block-text {
+    padding-right: calc(#{$cf-padding} / 2 - 15px);
+  }
+  .frm_checkbox, .frm_submit {
+    margin-top: 1rem;
+  }
+}
